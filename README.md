@@ -15,8 +15,8 @@ You will need maven to build and run the DieselAgent.
   * calypso.jar
   * calypsoml-core.jar
   * calypsoml-impl.jar
-3. Add your calypsosystem.properties.* files to the lib folder.
-4. Create an ENVS.txt file in the src/main/resources folder. This file should contain a comma seperated list of your environment names. (See ENVS-sample.txt).
+3. Copy your calypsosystem.properties.* files to the `src/main/resources` folder.
+4. Create an ENVS.txt file in the `src/main/resources` folder. This file should contain a comma seperated list of your environment names. (See ENVS-sample.txt).
 5. You can run `mvn clean package` to build the agent.
 6. To run the agent execute the command `mvn jetty:run`
 7. You can access the Web based status console at `http://localhost:8080/test-agent`
