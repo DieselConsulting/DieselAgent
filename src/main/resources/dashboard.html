@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DieselAgent Dashboard</title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Material Design -->
+    <link href="https://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="https://fezvrasta.github.io/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+    <div class="container-fluid main">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Statistics</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Logged in Users</h3>
+            </div>
+            <div class="panel-body">
+              <span id="logged-users">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Trades Since Midnight</h3>
+            </div>
+            <div class="panel-body">
+              <span id="trades-24hr">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Trades Last 7 Days</h3>
+            </div>
+            <div class="panel-body">
+              <span id="trades-7days">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script>
+    $( document ).ready(function() {
+
+        var timer = function() {
+            $.get( "stats", function( data ) {
+                $('#logged-users').text(data['users']);
+                
+                $('#trades-24h').text(data['trades24hr']);
+                
+                $('#trades-7days').text(data['trades7days']);
+                
+                /*$('#audit-list').empty();
+                
+                $.each(data['audit'], function( index, value ) {
+                    $('#audit-list').append('<li style="position: inherit">'
+                        + '<span class="label">' + value['action'] + '</span>'
+                        + '<span class="value">' + value['user'] + '</span>'
+                        + '</li>');
+                });
+                
+                
+                var now = new Date();
+                
+                var min = '' + now.getMinutes();
+                if(now.getMinutes() < 10)
+                    min = '0' + now.getMinutes();
+                    
+                var s = 'Last updated ' + now.getHours() + ':' + min;
+                $('.updated-at').text(s);*/
+            });
+        };
+        
+        timer();
+            
+        setInterval(timer, 60000);
+    });
+  </script>
+  </body>
+</html>
