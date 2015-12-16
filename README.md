@@ -4,7 +4,7 @@ The DieselAgent provides a web based statistics console for a running Calypso se
 
 Initially the DieselAgent was developed as a way of performing regression across two Calypso instances.
 
-## Installation
+## Installation and Running
 
 You will need maven to build and run the DieselAgent.
 
@@ -19,6 +19,7 @@ You will need maven to build and run the DieselAgent.
 4. Create an ENVS.txt file in the src/main/resources folder. This file should contain a comma seperated list of your environment names. (See ENVS-sample.txt).
 5. You can run `mvn clean package` to build the agent.
 6. To run the agent execute the command `mvn jetty:run`
+7. You can access the Web based status console at `http://localhost:8080/test-agent`
 
 
 
